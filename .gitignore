@@ -1,0 +1,47 @@
+handlers/helloworld
+*.py[cod]
+log
+logs/*
+docs/_build/*
+docs/_build
+# C extensions
+*.so
+.idea
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+# Installer logs
+pip-log.txt
+# Unit test / coverage reports
+.coverage
+.tox
+*.swo
+*.swn
+nosetests.xml
+# Translations
+*.mo
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+*.swp
+*.orig
+# vim swap
+*~
+!logs/empty.log
+.settings
+amaps/setting_local.py
+amaps/setting_online.py
+amaps/setting_online_ali.py
+
