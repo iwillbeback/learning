@@ -14,8 +14,8 @@ Gitlab 本地环境搭建步骤:
 	 2> git config --local user.email "coladou@qq.com"
 
 4> 在github 远端配置ssh key
-     1>  生成密钥对, 在ssh 目录下( windows 缺省为: c:/users/tong.liu/.ssh/ )
-		    ssh-keygen -C "coladou@qq.com" -t -rsa
+     1>  生成密钥对, 打开git bash
+		    ssh-keygen -t rsa -C "coladou@qq.com"
 		    
 	 2> 将生成的公钥文件内容添加至gitlab
 		
