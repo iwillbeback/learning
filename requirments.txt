@@ -6,4 +6,5 @@
 
 4> 在github 远端配置ssh key
 
-5> 
+5> 在github创建远端版本库, 并在本地分支做关联
+      git remote add origin git@github.com:coladou/learning.git
