@@ -4,24 +4,24 @@ Gitlab 本地环境搭建步骤:
       从http://msysgit.github.io/下载，然后按默认选项安装即可
       安装完成后，在开始菜单里找到“Git”->“Git Bash”，就说明Git安装成功！
 
-2.  创建&初始化本地仓库
-     选定或创建一个目录，如d:/working/learning, 在gib bash环境下:
-      git init
-
-3.  配置本地用户名和邮箱
+2.  配置本地用户名和邮箱
     在git bash下进入d:/working/learning目录
      1> git config --local user.name "coladou"
 	 2> git config --local user.email "coladou@qq.com"
-
-4> 在github 远端配置ssh key
+	 
+3. 在github 远端配置ssh key
      1>  生成密钥对, 打开git bash
 		    ssh-keygen -t rsa -C "coladou@qq.com"
 		    
-	 2> 将生成的公钥文件内容添加至gitlab
-		
-5> 在github创建远端版本库, 并在本地分支做关联
+	 2> 将生成的公钥文件内容添加至gitlab, setting--ssh
+	 	 
+4.  创建&初始化本地仓库
+     选定或创建一个目录，如d:/working/learning, 在gib bash环境下:
+      git init
+	
+5  在github创建远端版本库, 并在本地分支做关联
       git remote add origin git@github.com:coladou/learning.git
       
-6> 将本地分支推送到github
+6  将本地分支推送到github
 	  git push -u origin master --force
 
