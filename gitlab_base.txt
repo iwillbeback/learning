@@ -14,14 +14,19 @@ Gitlab 本地环境搭建步骤:
 		    ssh-keygen -t rsa -C "coladou@qq.com"
 		    
 	 2> 将生成的公钥文件内容添加至gitlab, setting--ssh
-	 	 
-4.  创建&初始化本地仓库
+	 
+4. 得到一个GIT库,  有两种情况:
+	 1> 从远端克隆已有github 库
+	 2> 从本地创建一个git 库， 将推送至github
+	 以下5~7为前者 
+
+5.  创建&初始化本地仓库
      选定或创建一个目录，如d:/working/learning, 在gib bash环境下:
       git init
 	
-5  在github创建远端版本库, 并在本地分支做关联
+6.  在github创建远端版本库, 并在本地分支做关联
       git remote add origin git@github.com:coladou/learning.git
       
-6  将本地分支推送到github
+7.  将本地分支推送到github
 	  git push -u origin master --force
 
