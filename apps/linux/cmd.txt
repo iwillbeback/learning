@@ -1,0 +1,21 @@
+1. whereis
+	查看指定程序的安装目录
+	
+2. 查看当前所有用户
+	more /etc/shadow
+
+3. 查看CentOS 版本:
+	rpm -q centos-release
+
+2. 安装gcc
+    yum -y install gcc
+    yum -y install gcc-c++
+    yum install make
+
+3. 安装编译工具cmake
+	yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
+
+3. 安装wget
+	yum -y install wget
+
+	

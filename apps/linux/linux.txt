@@ -1,0 +1,14 @@
+
+CentOS, 为后续编译安装包不出错，先安装如下库:
+
+# yum install - openssl-devel.i686
+yum install zlib
+yum install zlib-devel
+yum install -y openssl-devel
+yum install -y sqlite-devel
+yum install -y ncurses
+yum install -y gdbm-devel
+yum install -y readline-devel
+yum install -y bzip2-devel
+yum install -y mysql-devel
+yum install -y python-devel

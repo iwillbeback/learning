@@ -1,0 +1,8 @@
+1> 本地Linux
+	root 拆字
+2> 本地MySQL:
+	root 拆字
+
+
+
+yum remove  openssl-devel.i686

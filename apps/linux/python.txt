@@ -1,0 +1,30 @@
+在CentOS 6.6上配置python 2.7
+
+1. 查看当前系统安装python 版本
+	 python -V
+
+2> 下载 & 解压 & 安装 Python 2.7.9
+	wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
+	tar   zxvf  Python-2.7.9.tgz
+	cd P	ython-2.7.9
+	make 
+	make install
+	如上述过程出错， 则请查看Linux初始化安装库
+
+4> 查看当前python  版本号:
+	python -V
+	如果不是2.7 则需要进行5， 6 步骤 
+
+**以下两步按需配置********************************************
+5> 设置软链接
+	mv /usr/bin/python  /usr/bin/python2.6
+	ln -s /usr/local/bin/python2.7 /usr/bin/python
+	
+6> 配置yum 	
+	因yum 需要python2.6 才能运行
+	 vi /usr/bin/yum
+	 第一行改为: 
+	 #!/usr/bin/python2.6
+
+
+

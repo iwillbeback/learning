@@ -1,0 +1,48 @@
+安装yum 安装新版mysql
+1. 首先删除原有mysql 5.1
+	      rpm -qa | grep mysql
+	      rpm -e mysql
+	      
+2. 从mysql 官方下载相应的rpm 包
+	     1>  http://dev.mysql.com/downloads/repo/yum/
+	     2>  http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/index.html#repo-qg-yum-installing
+	     
+3. 执行
+		  rpm -Uvh mysql-community-release-el6-n.noarch.rpm  
+	
+4. 行安装
+			yum install mysql-community-server
+	
+5. 启动mysql
+			service mysqld start
+
+6. 配置mysql 
+	1> 设置mysql 用户
+		步骤3中已经自动添加了： mysql用户组,  用户: mysql
+		如果没有则需要按如下脚本添加:
+		groupadd mysql
+		useradd -g mysql mysql
+
+7. 更改mysql 密码:
+	mysql> SET PASSWORD= PASSWORD('123456');
+
+8. 设置mysql可以远程访问
+	1> mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+	2> 配置防火墙，允许3306端口:
+		vi /etc/sysconfig/iptables
+		#添加下面的一句
+		-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+		#保存退出，重启防火墙
+		service iptables restart
+	3> 这样就可以通过NaviCat 访问了
+
+10. 问题解决:
+     执行mysql
+	1> Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
+		查看/etc/my.cnf 配置文件的.sock文件位置, 
+		如果指定位置无法找到mysql.sock文件或丢失, 可以执行:
+		mysqld_safe 
+		
+	2> 更多问题:
+		http://my.oschina.net/superbigfu/blog/176814
+	

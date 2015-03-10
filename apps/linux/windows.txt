@@ -1,0 +1,44 @@
+1> windows 环境下需要先安装 C/C++ 编译器:
+	http://aka.ms/vcpython27
+
+2> 安装Python
+	https://www.python.org/downloads/
+
+3> 安装pip
+	https://pip.pypa.io/en/latest/
+
+4> 安装easy_install
+	
+
+5> 安装django
+	pip install django==1.5
+
+6> 安装MySQLdb
+	pip install MySQL-python
+	或
+	pip install mysqlclient
+
+7> 安装
+	pip install python-memcached
+
+8> 安装
+	pip install simplejson
+
+
+Windows 环境下VirtualEnv的设置:
+1> 安装VirtualEnv
+	pip install virtualenv
+	或者
+	easy_install virtualenv
+2> 在当前目录下创建一个工作环境AOS:
+	virtualenv AOS  # 此命令会在当前目录下创建文件夹: AOS
+	
+3> 激活虚拟机环境:
+   cd AOS\scripts
+   activate.bat
+   
+4> 安装各种包...
+	
+
+   
+	

@@ -1,0 +1,40 @@
+1> 安装python, mysql
+
+2> 安装easy_install
+	   wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py
+	   python ez_setup.py --insecure
+
+一. 用pip 安装django
+	1> 安装pip (见: https://pip.pypa.io/en/latest/ )
+		wget https://bootstrap.pypa.io/get-pip.py
+		python pip-get.py
+	
+	2> 安装 django 
+		pip install Django==1.7.5
+		
+	3> 查看django 是否安装成功
+		python
+		import django
+		django.VERSION
+		
+	
+3> 安装mysqlclient
+	wget https://pypi.python.org/packages/source/m/mysqlclient/mysqlclient-1.3.6.tar.gz#md5=58d7c9c617a4286a88db290e7857d3aa
+	tar xfz mysqlclient-1.3.6.tar.gz
+	cd mysqlclient
+	python setup.py install  #此步如出错，请安装Linux初始库
+	
+4> 新建django 项目测试之:
+	1> 查找django-admin.py 位置
+		which django-admin.py
+	
+	2> 新建项目:
+		python /usr/local/bin/django-admin.py startproject learning
+	
+	3> 运行项目:
+	 	
+	
+	
+	
+	
+	
