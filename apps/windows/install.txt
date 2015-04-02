@@ -24,6 +24,9 @@
 8> 安装
 	pip install simplejson
 
+9> python 访问sqlserver
+	pip install pymssql
+
 
 Windows 环境下VirtualEnv的设置:
 1> 安装VirtualEnv

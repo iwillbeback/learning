@@ -1,0 +1,12 @@
+1. Linux 安装 
+   pip install virtualenv
+
+2. 安装python 2.7.9
+   pip install python=2.7.9
+   pip install django=1.5.0
+   pip install MySQL-python
+   pip install pyinotify
+   
+3. 国内python 源
+   1> 豆瓣源
+	  pip install -i http://pypi.douban.com/simple/ mysqlclient
