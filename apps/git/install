@@ -1,0 +1,7 @@
+安装及配置步骤， 以CentOS 为例
+1. git 安装
+   yum install git
+   
+2. 配置用户名及邮箱
+   git config --local user.name "coladou"
+   git config --local user.email "coladou@qq.com"

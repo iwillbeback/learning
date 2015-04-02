@@ -5,15 +5,19 @@ Gitlab 本地环境搭建步骤:
       安装完成后，在开始菜单里找到“Git”->“Git Bash”，就说明Git安装成功！
 
 2.  配置本地用户名和邮箱
-    在git bash下进入d:/working/learning目录
+     在git bash下进入d:/working/learning目录
      1> git config --local user.name "coladou"
 	 2> git config --local user.email "coladou@qq.com"
+  配置完成后查看当前配置信息:
+  	git config --local -l
+  
 	 
 3. 在github 远端配置ssh key
      1>  生成密钥对, 打开git bash
 		    ssh-keygen -t rsa -C "coladou@qq.com"
 		    
-	 2> 将生成的公钥文件内容添加至gitlab, setting--ssh
+	 2> 将生成的公钥文件内容添加至gitlab:
+	    选择"setting"--> "ssh"
 	 
 4. 得到一个GIT库,  有两种情况:
 	 1> 从远端克隆已有github 库
