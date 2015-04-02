@@ -10,7 +10,7 @@
 		python pip-get.py
 	
 	2> 安装 django 
-		pip install Django==1.7.5
+		pip install Django==1.8
 		
 	3> 查看django 是否安装成功
 		python

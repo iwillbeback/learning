@@ -7,15 +7,10 @@
 3. 查看CentOS 版本:
 	rpm -q centos-release
 
-2. 安装gcc
-    yum -y install gcc
-    yum -y install gcc-c++
-    yum install make
-
-3. 安装编译工具cmake
-	yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
-
-3. 安装wget
-	yum -y install wget
+7. tail 命令
+   1> 动态跟踪文件变化: tail my.log -f
+   2> 显示文件最后20行: tail my.log -n 20
+   3> 显示文件前20行:  tail my.log -n +20
+   
 
 	

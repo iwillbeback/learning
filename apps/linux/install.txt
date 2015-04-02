@@ -1,6 +1,21 @@
-
 CentOS, 为后续编译安装包不出错，先安装如下库:
 
+
+yum -y install gcc
+yum -y install gcc-c++
+yum install make
+
+#安装编译工具cmake
+yum -y install make gcc-c++ cmake bison-devel  ncurses-devel
+yum -y install wget
+
+#安装pip: https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+
+#安装screen:
+yum install screen
+
+#以下为安装VirtualBox 共享所需要的包
 # yum install - openssl-devel.i686
 yum install zlib
 yum install zlib-devel
@@ -12,3 +27,5 @@ yum install -y readline-devel
 yum install -y bzip2-devel
 yum install -y mysql-devel
 yum install -y python-devel
+
+

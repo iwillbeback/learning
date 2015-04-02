@@ -1,0 +1,10 @@
+一.查看当前正在执行的SQL 
+	1> 确保my.ini中有以下设置:
+		general_log_file="sql_raw.log"
+	
+	2> 执行mysql 命令:
+	   mysql> set global general_log=on;
+	   
+	3> 观察文件变化:
+	   tail sql_raw.log -f
+
