@@ -1,4 +1,4 @@
-python 2.x 中字符串，uncode, encode, decode  乱码
+python 2.x 中字符串，uncode, encode, decode  乱码 json.dumps(), json.
 
 1>字符串类型,  如不加前缀均为字节串, 如:
 	  s1 = "abc"
@@ -34,7 +34,28 @@ encode 与decode：
       第一行告诉Linux/MacOS, 这是一个python 文件， windows 会忽略这个注释 
       第二行告诉python 解释器，以utf-8编码读取本文件
 
-      
+
+5> json.load() 中文失败
+	请将文件编码改为UTF-8 (No Bom)
+
+6> json.dumps() 失败, 如有以下语句:
+   extra = {
+   			"name": _name ,
+   			"address": _addr,
+   			"age": "15"
+   			}
+   	json.dumps(extra, indent=4, ensure_ascii=False,
+                         sort_keys=True)
+          原因： 在于ertra 中含有非utf-8编码的健或值:
+          解决：
+        extra = {
+   			"name": _name.encode("utf-8") ,
+   			"address": _addr.encode("utf-8"),
+   			"age": "15"
+   			}
+
+ 
+	    
      
 	  
 	  
