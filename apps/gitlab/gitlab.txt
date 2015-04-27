@@ -6,15 +6,15 @@ Gitlab 本地环境搭建步骤:
 
 2.  配置本地用户名和邮箱
      在git bash下进入d:/working/learning目录
-     1> git config --local user.name "coladou"
-	 2> git config --local user.email "coladou@qq.com"
+     1> git config --local user.name "michael"
+	 2> git config --local user.email "michael@qq.com"
      配置完成后查看当前配置信息:
   	git config --local -l
   
 	 
 3. 在github 远端配置ssh key
      1>  生成密钥对, 打开git bash
-		    ssh-keygen -t rsa -C "coladou@qq.com"
+		    ssh-keygen -t rsa -C "michael@qq.com"
 		    
 	 2> 将生成的公钥文件内容添加至gitlab:
 	    选择"setting"--> "ssh"
@@ -29,7 +29,7 @@ Gitlab 本地环境搭建步骤:
       git init
 	
 6.  在github创建远端版本库, 并在本地分支做关联
-      git remote add origin git@github.com:coladou/learning.git
+      git remote add origin git@github.com:michael/learning.git
       
 7.  将本地分支推送到github
 	  git push -u origin master --force

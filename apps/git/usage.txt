@@ -2,7 +2,7 @@
 	   Format:	
 	   		git remote add <分支别名> <远程主机名>
 	   Sample:
-	   		git remote add upstream git@git.debug.amap.com:aos/amaps.git 
+	   		git remote add upstream git@git.debug.google.com:aos/bass.git 
 
 2. 合并分支xxx到当前分支
 	   git merge 20141023     #合并20141023到当前分支

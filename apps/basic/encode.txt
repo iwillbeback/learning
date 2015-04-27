@@ -1,0 +1,63 @@
+
+字符编码的一些知识
+
+关键字: python 字符串，unicode, encode, decode  乱码 json.dumps(), 附带编码常识
+
+1. python 字符串类型, 如不加前缀均为字节串, 如:
+	  s1 = "abc"
+	  s2 = "中国"
+	  调用 len(s2) 会输出6, len() 计算的是字节码长度, 而s2的字节码长度为6
+
+2.  加前缀u, 表示unicode 串, 如:
+	  s3 = u"中国"
+
+3.  加前缀b, 同不加前缀，为字节串:
+	  s4 = b"中国"
+
+4.  字节串的编码取决于py文件的编码
+
+5. encode 与decode：
+	1> encode 是将uncode 转为字节串, 如:
+		 ss =  u"中国"
+		 s1 = ss.encode("utf-8")
+	
+	2> decode 是将字节码转为uncode:
+	     ss = "中国"
+	     s1 = ss.decode("utf-8")
+     
+
+6. python 代码文件的编码问题
+      # !/usr/bin/env python
+      # -*- coding: utf-8 -*-   
+      1> 第一行告诉Linux/MacOS, 这是一个python 文件， windows 会忽略这个注释 
+      2> 第二行告诉python 解释器，以utf-8编码读取本文件
+
+
+7.  json.load(), json.dumps(),中文的问题:
+	1> json.load(fp, encoding)
+		只支持: utf-8， 各种ansi: gbk,gb2312,big5 等
+		不支持: unicode, utf-8 with BOM 编码
+		
+	2>	unicode 编码
+		可通过codecs.open(fp, encoding) 读取所有内容，转换为utf-8.
+		再调用json.loads(ss, encoding)
+	3> utf-8  BOM 编码
+		同2> , 需要跳过前三个BOM字节
+
+8. 从文件中读取内容, 源文件编码 与读取内容编码的问题
+	读取文件的两种方式： open() 直接读取; codecs.open(encoding=encoding)指定文件编码读取
+	
+	7.1> open() 直接读取
+		readline() 返回为字节串， 编码同源文件编码. 对于带有BOM 的，需要手动去除BOM
+	
+	7.2> codecs.open( encoding=encoding)  读取
+		readline() 返回unicode 串
+	 
+
+
+
+ 
+	    
+     
+	  
+	  

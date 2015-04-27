@@ -2,6 +2,13 @@
 1. git 安装
    yum install git
    
-2. 配置用户名及邮箱
-   git config --local user.name "coladou"
-   git config --local user.email "coladou@qq.com"
+2. 在指定目录下，配置用户名及邮箱
+   git config --local user.name "123456"
+   git config --local user.email "123456@qq.com"
+
+3. 生成二个密钥对, 在ssh 目录下( windows 缺省为: c:/users/michael.wang/.ssh/ )
+   ssh-keygen -C "123456@qq.com" -t -rsa
+
+4. 在gitlab 上配置公钥
+   ...
+   
