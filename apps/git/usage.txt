@@ -1,7 +1,7 @@
 1. 为远程分支设置另名
-	   Format:	
+	  Format:	
 	   		git remote add <分支别名> <远程主机名>
-	   Sample:
+	  Sample:
 	   		git remote add upstream git@git.debug.google.com:aos/bass.git 
 
 2. 合并分支xxx到当前分支
@@ -37,16 +37,17 @@
 	    git rebase --abort
 
 6. 用cherry-pick 发起mr:
-    以release 为发布分支，master 为主分支。要从master 挑选部分commit至release， 发起MR:
-     1> 切换到master分支,同步代码:  git pull
-	 2> 切换到要push 的分支:       git checkout release
-	 3> 执行cherry-pick: 
-	    3.1> 如果是一个merger:        
-	       git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36 -m 1
+       以release 为发布分支，master 为主分支。要从master 挑选部分commit至release， 发起MR:
+   1> 切换到master分支,同步代码:  git pull
+   2> 切换到要push 的分支:       git checkout release
+   3> 执行cherry-pick: 
+	  1> 如果是一个merger:        
+	     git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36 -m 1
 	       
-	    3.2> 如果是一个提交:
-	       git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36
-	 4> 推送release 至gitlab, 在远端发起MR
+	  2> 如果是一个提交:
+	     git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36
+	  
+	  3> 推送release 至gitlab, 在远端发起MR
 	    
    
    

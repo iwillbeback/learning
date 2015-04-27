@@ -5,8 +5,7 @@ GIT配置多个远程主机:
 	git config --global --unset user.email
 		
 2>  生成二个密钥对, 在ssh 目录下( windows 缺省为: c:/users/michael.wang/.ssh/ )
-	ssh-keygen -C "123456@qq.com" -t -rsa
-		
+	ssh-keygen -C "123456@qq.com" -t rsa
 
 3> 为每个git 项目分别配置， 也就是在每个的根目录下分别运行 git config 
 	git config --local user.name "michael.wang"
