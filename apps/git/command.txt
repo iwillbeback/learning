@@ -15,7 +15,11 @@
 4. git checkout
    1> 切换至trunk分支
    	  git checkout trunk
-   2> 放弃
+   
+   2> 放弃文件修改;
+   	  git checkout apps/train/backend.py
+   	  放弃当前所有文件：
+   	  git checkout -- .
    	
 
 5. git commit
