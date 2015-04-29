@@ -1,63 +1,67 @@
-1> WIN7 设置连接共享
+VirtualBox 在Windows 中设置网络连接和共享文件夹
+
+1. WIN7 设置连接共享
    WIN7 --更改适配器设置--宽带连接:  
-   属性-共享:  允许其他网络用户通过此计算机的Internet连接来连接
+   	属性-共享:  允许其他网络用户通过此计算机的Internet连接来连接
    
-2> 查看: VirtualBox Host-Only Network
-   的IP 地址:  缺省为 192.168.137.137
+2. 查看: VirtualBox Host-Only Network的IP地址
+	缺省为: 192.168.137.137
+	可改为: 192.168.137.1		(4.3 设置 DNS 会用到)
 
-3> 设置VirtualBox 的网络连接:
-   右键--属性--网络：
-   连接方式: 仅主机(Host-Only)xxxx
-   混杂模式： 拒绝
-   接入网络:  选中
+3. 设置VirtualBox 的网络连接:
+	右键--属性--网络：
+	连接方式: 仅主机(Host-Only)xxxx
+	混杂模式： 拒绝
+	接入网络:  选中
 
-4> CentOS 中设置:
-   1. 修改ip地址
+4. CentOS 中设置:
+	1> 修改ip地址
        vi /etc/sysconfig/network-scripts/ifcfg-eth0:
 	   ONBOOT=yes
 	   IPADDR=192.168.137.101 #确保和虚拟网卡在一个网段
 	   BOOTPROTO=staticvi 
-    2. 修改网关:
+	
+	2> 修改网关:
 	   vi /etc/sysconfig/network
 	   GATEWAY=192.168.137.1 #设置为虚拟网卡地址
 	   NETWORKING=yes
-	3. 设置DNS:
-	   vi /etc/resolv.conf
-	   
+	
+	3> 设置DNS:
+	   vi /etc/resolv.conf	   
 	   nameserver=192.168.137.1 #设置为虚拟网卡地址
 
-安装增强功能：
-1> 运行VirtualBox CentOS 虚拟机, 切换至管理员权限
 
-2> 从VirtualBox 菜单中选择:
+1. 运行VirtualBox CentOS 虚拟机, 切换至管理员权限
+
+2. 从VirtualBox 菜单中选择:
 	"设备" --"安装增强功能"
 
-3> 挂接iso光驱:
+3. 挂接iso光驱:
 	mkdir /media/VirtualBoxGuestAdditioins
 	mount -r /dev/cdrom /media/VirtualBoxGuestAdditioins
 
-4> 升级Linux内核，并重启系统
+4. 升级Linux内核，并重启系统
 	yum update kernel*
 	reboot
-5> 安装RHEL, 注意CentOS 版本, 本文意指6.x：
+	
+5. 安装RHEL, 注意CentOS 版本, 本文意指6.x：
 	rpm  -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
 
-6> 安装依赖包:
+6. 安装依赖包:
 	yum install gcc kernel-devel kernel-headers dkms make bizip2 perl
 
-7> 安装增强功能包:
+7. 安装增强功能包:
 	cd /media/VirtualBoxGuestAdditioins
 	./VirtualBoxAdditions.run
 
-8> 设置共享文件夹:
+8. 挂接共享文件夹:
 	mkdir /mnt/work
 	mount -t vboxsf workspace /mnt/work/
 
 问题:
-Installing the Window System drivers
-Could not find the X.Org or XFree86 Window System, skipping.
-
-参考:
-http://www.if-not-true-then-false.com/2010/install-virtualbox-guest-additions-on-fedora-centos-red-hat-rhel/  
+1> Installing the Window System drivers
+    Could not find the X.Org or XFree86 Window System, skipping.
+       参考:
+	http://www.if-not-true-then-false.com/2010/install-virtualbox-guest-additions-on-fedora-centos-red-hat-rhel/  
    
    

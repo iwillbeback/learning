@@ -7,10 +7,66 @@
 3. 查看CentOS 版本:
 	rpm -q centos-release
 
-7. tail 命令
+4. tail 命令
    1> 动态跟踪文件变化: tail my.log -f
    2> 显示文件最后20行: tail my.log -n 20
    3> 显示文件前20行:  tail my.log -n +20
+   
+5. mount 命令
+	挂载U盘，光盘镜像，移动硬盘， Windows 共享文件夹等
+	所谓挂载，可理解为OS为设备分配盘符的过程。在Windows下，这一过程是自动化的。
+	Format:
+		mount [-t vfstype] [-o options] device dir
+		
+		1> -t vfstype: 
+			指定文件系统类型，通常可省略。Linux会自行匹配
+			常见的文件系统有:
+				Windows NT:			ntfs
+				Windows文件网络共享:	smbfs
+				UNIX文件网络共享:		nfs
+		2> device:
+			要挂载的设备
+		
+		3> dir
+			Linux 本地目录
+		
+	使用步骤：
+		1> 在Linux 建立一个挂载目录
+		2> 执行mount 命令
+		3> 在挂载目录下可找到设备的信息
+		
+	For example:
+		mkdir /mnt/work
+		mount -t vboxsf workspace /mnt/work/
+	
+
+6. screen
+	SSH到远程服务器需要执行长期运行任务时，如果关掉窗口，则任务结束。
+	screen 主要为解决这一问题，能保证在关掉窗口时， 任务继续运行
+	
+	1> 新建 | 恢复 一个会话:
+		screen -R <作业名称>
+		如: screen -R wx_debug
+		解释: 查找wx_debug的作业，如果存在就恢复，不存在即新建
+	
+	
+	2> 查看当前所有作业:
+		screen -ls
+	
+	3> 从当前作业detach, 暂时离开。将当前的screen session 丢至后台执行
+		Ctrl + a + d
+		
+	4> 清除dead 状态的会话
+		screen -wipe
+		
+	注： screen 需要单独安装
+		yum install screen
+		
+		
+
+7. cat
+
+8. 
    
 
 	

@@ -1,7 +1,18 @@
 
-字符编码的一些知识
+字节，字符及编码的一些知识
 
-关键字: python 字符串，unicode, encode, decode  乱码 json.dumps(), 附带编码常识
+关键字
+python 字符串，unicode, encode, decode  乱码 json.dumps(), 附带编码常识
+
+描述
+编码, 是计算机如何使用字节来表示一个字符的约定。
+广义上，可分为三种编码:
+1> ASCII编码				:单字节编码 
+2> ANSI编码（本地化编码）	:多字节编码. 如: GBK, BIG5, JIS 等
+3> UNICODE编码（国际化编码）	:严格来说，unicode 只是一种标准,只是规定了各个字符的unicode 码位。
+						   而GBK, ASCII是编码实现
+						 UNICODE 编码实现: utf-16, utf-8
+
 
 1. python 字符串类型, 如不加前缀均为字节串, 如:
 	  s1 = "abc"
@@ -36,11 +47,12 @@
 7.  json.load(), json.dumps(),中文的问题:
 	1> json.load(fp, encoding)
 		只支持: utf-8， 各种ansi: gbk,gb2312,big5 等
-		不支持: unicode, utf-8 with BOM 编码
+		不支持: unicode, utf-8 With_BOM
 		
 	2>	unicode 编码
 		可通过codecs.open(fp, encoding) 读取所有内容，转换为utf-8.
 		再调用json.loads(ss, encoding)
+	
 	3> utf-8  BOM 编码
 		同2> , 需要跳过前三个BOM字节
 
@@ -54,8 +66,26 @@
 		readline() 返回unicode 串
 	 
 
-
-
+9. 关于字节序
+	是关于多字节数据，在存储或传输时，高位字节和低位字节的顺序标准. 
+	1> big endian
+		最直观的顺序
+	
+	2> little endian
+		最符合人类思维的顺序
+		
+	3> 网络字节序
+	   	同big endian
+	
+	4> Java 字节序
+		同Big endian， 即多字节数据在java 虚拟机中的存储顺序 
+	
+	5> 只跟多字节类型的数据有关的比如: int,short,long型
+		而对单字节数据byte却没有影响
+		
+	6> 计算机存储字节序，只同CPU 相关. 也称作: 主机序
+		IA 架构(Intel, AMD )	:Little endian
+		Power PC, PARC		:Big endian
  
 	    
      
