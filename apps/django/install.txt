@@ -28,6 +28,12 @@
 	1> 开发机不需要安装mysql server , 需要安装mysql C connector 
 	2> 如果安装出现如下提示： mysql_config not found。 需要：
 		export PATH=$PATH:/usr/local/mysql-connector-c-6.1.6-osx10.8-x86_64/bin/
+	3> 测试是否安装成功， 进入python shell:
+		import MySQLdb
+		出现image not found
+		设置软链接：
+		sudo ln -s /usr/local/mysql-connector-c-6.1.6-osx10.8-x86_64/lib/libmysqlclient.18.dylib 
+			/usr/lib/libmysqlclient.18.dylib
 	
 4> 新建django 项目测试之:
 	1> 查找django-admin.py 位置
