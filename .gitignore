@@ -45,3 +45,5 @@ amaps/setting_local.py
 amaps/setting_online.py
 amaps/setting_online_ali.py
 
+#mac
+.DS_Store
