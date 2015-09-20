@@ -1,0 +1,64 @@
+VirtualBox. CentOS 启动
+1. mount -t vboxsf share /mnt/share/
+
+2. service mysqld start
+
+3. /usr/local/bin/uwsgi coladou.ini
+
+4. setenforce 0
+
+5. service nginx restart
+
+6. 浏览器访问(default.conf: server listen 端口):
+	http://192.168.1.103/api/poem/pick/
+
+7. /etc/nginx/conf.d/default.conf:
+	upstream django {
+        server 0.0.0.0:9090; #uwsgi 监控端口，非浏览器输入的端口
+	}
+	
+	server {
+	    listen       80;		#nginx 监控端口，在浏览器输入端口
+	    server_name  localhost;
+	
+	    #charset koi8-r;
+	    #access_log  /var/log/nginx/log/host.access.log  main;
+	
+	    location / {
+	        uwsgi_pass  django;
+	        include     uwsgi_params;
+	    }
+	    #location / {
+	    #    root   /usr/share/nginx/html;
+	    #    index  index.html index.htm;
+	    #}
+	
+	    #error_page  404              /404.html;
+	
+	    # redirect server error pages to the static page /50x.html
+	    #
+	    error_page   500 502 503 504  /50x.html;
+	    location = /50x.html {
+	        root   /usr/share/nginx/html;
+	    }
+	
+	    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+	    #
+	    #location ~ \.php$ {
+	    #    proxy_pass   http://127.0.0.1;
+	    #}
+	}
+	
+8. coladou.ini 配置
+	[uwsgi]
+	chdir=/mnt/share/coladou
+	module=coladou.wsgi:application
+	master=True
+	socket=0.0.0.0:9090
+	pidfile=/tmp/coladou.pid
+	vacuum=True
+	max-requests=5000
+	daemonize=/var/log/uwsgi/coladou.log
+
+9. 浏览器输入:
+	127.0.0.1:80

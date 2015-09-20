@@ -4,6 +4,8 @@
 	      rpm -e mysql
 	      
 2. 从mysql 官方下载相应的rpm 包
+		oracle 账号： friend4ever@sohu.com oakcdrom123@ORACLE
+		
 	     1>  http://dev.mysql.com/downloads/repo/yum/
 	     2>  http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/index.html#repo-qg-yum-installing
 	     

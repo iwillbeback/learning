@@ -66,7 +66,21 @@
 
 7. cat
 
-8. 
+8. 用户管理
+   1> 创建用户
+   		useradd xu.wang #创建用户xu.wang, 并创建用户目录  /home/xu.wang/
+   2> root设置其它用户口令:
+   		passwd xu.wang
+   3> 为用户xu.wang设置sudo
+   	  1> 用超级用户登录系统
+   	  2> 修改sudoers文件权限： chmod u+w /etc/sudoers
+   	  3> vi /etc/sudoers
+   	  4> 找到root ALL=(ALL) ALL, 在下面添加:
+   	  	 xu.wang ALL=(ALL) ALL
+   	  5> 保存 & 退出
+   	  6> 撤消sudoers文件权限
+   	  	 chmod u-w /etc/sudoers
+
    
 
 	

@@ -1,2 +1,4 @@
 或可参见：
 http://blog.csdn.net/galaft/article/details/12583497
+
+1. 安装完毕后，设置网格连接方式 为桥接， 即可上网

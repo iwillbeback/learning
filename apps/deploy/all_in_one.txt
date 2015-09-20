@@ -1,0 +1,109 @@
+1. 安装 CentOS 
+
+2. 安装Python
+	1> 查看当前python 版本, python -V
+	2> 升级python
+   	  wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
+	  tar   zxvf  Python-2.7.9.tgz
+	  cd P	ython-2.7.9
+	  make 
+	  make install
+	  
+	3> 因yum 安装源需要老版本python, (本文以centos6.x为例，自带python2.6.6)做如下配置：
+		3.1 > 设置软链接
+			mv /usr/bin/python  /usr/bin/python2.6
+			ln -s /usr/local/bin/python2.7 /usr/bin/python
+		3.2> 配置yum, 因yum 需要python2.6 才能运行
+			 vi /usr/bin/yum
+			 第一行改为: 
+			 #!/usr/bin/python2.6
+
+3> 安装pip (见: https://pip.pypa.io/en/latest/ )
+	wget https://bootstrap.pypa.io/get-pip.py
+	python pip-get.py
+
+4> 升级mysql
+   1> 查看当前mysql 版本
+   		mysql -V
+   2> 删除当前mysql 5.1
+   		rpm -qa | grep mysql
+	    rpm -e mysql
+   3> 安装指定版本的mysql
+	     1>  http://dev.mysql.com/downloads/repo/yum/
+	     2>  http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/index.html#repo-qg-yum-installing
+	     3>  rpm -Uvh mysql-community-release-el6-n.noarch.rpm  
+	     4>  yum install mysql-community-server
+	     5> 启动mysql
+			service mysqld start
+	4> 更多请参见 
+
+5> 安装django
+   1. pip install Django==1.8.2
+   2. 查看django 是否安装成功，进入python shell
+   import django
+   django.VERSION
+
+6> 安装mysqlclient， 用于在django中访问mysql
+	1. pip install mysqlclient
+	2. 测试是否安装成功，进入python shell
+		import MySQLdb
+	3. 其它问题请参见
+
+7> 安装uwsgi
+	1. pip install uwsgi
+    2. 测试uwsgi是否安装成功:
+       uwsgi --http :8000 --wsgi-file test.py
+    	   从浏览器输入: http://192.168.1.100:8000/
+
+8>安装nginx
+	1.安装
+		wget http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+		rpm -ivh nginx-release-centos-6-0.el6.ngx.noarch.rpm
+		yum install nginx
+		
+	2.启动nginx
+		1> 开放80端口，参见问题1
+		2> 启动nginx:
+			sudo /etc/init.d/nginx start
+		3> 测试nginx是否安装成功，浏览器输入: 
+			http://192.168.1.103:80		
+	
+	3.查看运行状态
+		ps aux | grep nginx
+  
+10> 配置django 项目
+	1> 只用uwsgi运行，在项目根目录(manage.py所在目录) 直接运行:
+		uwsgi --http :8000 --module coladou.wsgi
+		
+		游览器输入:  http://192.168.1.100:8000/
+		此时的调用栈: the web client <-> uWSGI <-> Django
+		
+	2> nginx, uwsgi, django部署运行
+	   ...
+	   
+	
+	3> 问题解决
+		出现connect()   failed (13: Permission denied)  upstream
+		
+		解决: SELinux所致， 关闭
+			1> 临时关闭, 不需要重启: setenforce 0 
+			2> 配置关闭，修改配置文件需要重启机器：
+				vi /etc/selinux/config 文件
+				SELINUX=enforcing  改为  SELINUX=disabled
+				重启机器即可
+
+11> 每次重启虚拟机，需要做的工作
+	1. 启动 mysql:  service mysqld start
+	2. 关闭SELinux: setenforce 0
+  		
+#########################################################
+1. 开放指定端口(以8000端口为例)
+   1. 查看当前端口配置情况：
+   		/etc/init.d/iptables status 
+   2. 开放指定端口：
+	   /sbin/iptables -I INPUT -p tcp --dport 9000 -j ACCEPT 
+	   /etc/init.d/iptables save
+	   /etc/init.d/iptables restart
+	   
+2. 查看当前系统监听端口
+	netstat -ntl
