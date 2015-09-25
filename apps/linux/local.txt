@@ -1,6 +1,0 @@
-1> 本机Linux
-	root 拆字
-	xu.wang: 拆字
-	
-2> 本机MySQL:
-	root 拆字
