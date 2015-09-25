@@ -1,11 +1,12 @@
 1. 安装 CentOS 
+   
 
 2. 安装Python
 	1> 查看当前python 版本, python -V
 	2> 升级python
    	  wget https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz
 	  tar   zxvf  Python-2.7.9.tgz
-	  cd P	ython-2.7.9
+	  cd 	Python-2.7.9
 	  make 
 	  make install
 	  
@@ -17,6 +18,8 @@
 			 vi /usr/bin/yum
 			 第一行改为: 
 			 #!/usr/bin/python2.6
+			 
+	4> yum install python-devel
 
 3> 安装pip (见: https://pip.pypa.io/en/latest/ )
 	wget https://bootstrap.pypa.io/get-pip.py
@@ -28,6 +31,7 @@
    2> 删除当前mysql 5.1
    		rpm -qa | grep mysql
 	    rpm -e mysql
+	    
    3> 安装指定版本的mysql
 	     1>  http://dev.mysql.com/downloads/repo/yum/
 	     2>  http://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/index.html#repo-qg-yum-installing
@@ -35,7 +39,7 @@
 	     4>  yum install mysql-community-server
 	     5> 启动mysql
 			service mysqld start
-	4> 更多请参见 
+	4> yum install mysql-devel
 
 5> 安装django
    1. pip install Django==1.8.2
@@ -59,7 +63,6 @@
 	1.安装
 		wget http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
 		rpm -ivh nginx-release-centos-6-0.el6.ngx.noarch.rpm
-		yum install nginx
 		
 	2.启动nginx
 		1> 开放80端口，参见问题1

@@ -1,10 +1,9 @@
 1> 安装python, mysql
 
-2> 安装easy_install
-	   wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py
-	   python ez_setup.py --insecure
-
-一. 用pip 安装django
+2> yum install python-devel
+   yum install mysql-devel
+   
+3> 用pip 安装django
 	1> 安装pip (见: https://pip.pypa.io/en/latest/ )
 		wget https://bootstrap.pypa.io/get-pip.py
 		python pip-get.py
@@ -18,7 +17,7 @@
 		django.VERSION
 		
 	
-3> 安装mysqlclient
+4> 安装mysqlclient
 	pip install mysqlclient
 
 	问题：
@@ -32,7 +31,7 @@
 		sudo ln -s /usr/local/mysql-connector-c-6.1.6-osx10.8-x86_64/lib/libmysqlclient.18.dylib 
 			/usr/lib/libmysqlclient.18.dylib
 	
-4> 新建django 项目测试之:
+5> 新建django 项目测试之:
 	1> 查找django-admin.py 位置
 		which django-admin.py
 	

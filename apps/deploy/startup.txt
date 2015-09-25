@@ -49,7 +49,7 @@ VirtualBox. CentOS 启动
 	    #}
 	}
 	
-8. coladou.ini 配置
+8. app.ini 配置
 	[uwsgi]
 	chdir=/mnt/share/coladou
 	module=coladou.wsgi:application
