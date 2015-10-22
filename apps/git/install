@@ -6,6 +6,7 @@
        从http://msysgit.github.io/下载，然后按默认选项安装即可     
    
 2. 进入git bash命令行, 在选定目录下，配置用户名及邮箱
+   git init
    git config --local user.name "123456"
    git config --local user.email "123456@qq.com"
    

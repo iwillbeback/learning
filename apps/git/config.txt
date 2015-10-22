@@ -14,7 +14,7 @@ GIT配置多个远程主机:
 	git config --local user.name "coladou"
 	git config --local user.email "123456@qq.com"
 	   
-4> 在目录下c:/users/michael.wang/.ssh/, 新建config 文件:
+4> 在目录下c:/users/michael.wang/.ssh/, 新建|编辑 配置文件： vi ~/.ssh/config
 	Host git.debug.amap.com
 	HostName git.debug.amap.com
 	User michael.wang

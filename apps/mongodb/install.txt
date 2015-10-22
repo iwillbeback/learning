@@ -1,0 +1,4 @@
+1. MAC 上安装mongodb
+	brew install mongodb
+
+2. 
