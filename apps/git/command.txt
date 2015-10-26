@@ -1,11 +1,22 @@
 1. git rm
+   1> 删除一个文件
+	  git rm apps/readme.txt
    1> 删除一个目录
-   	  git rm apps/package/ -r
-   2> 
+   	  git rm -r apps/package/
 
-2. git rebase
-   1> 
-
+2. git remote 
+   1> 查看当前的远端分支
+   	  git remote -v
+   
+   2> 为远端代码仓库URL 设置别名:
+   	  git remote add ticgit git://github.com/paulboone/ticgit.git
+   	  
+   	  解释: 这样在push 的时候就可以直接引用别名而无须输入完整URL. 如：将本地分支local推送到远端trunk
+	   	  以下两条命令等同：
+	   	  git push git://github.com/paulboone/ticgit.git  local:trunk
+	   	  或：
+	   	  git push ticgit local:trunk
+	   	  
 3. git fetch
    1> 获取远端分支
    	  git fetch origin trunk
@@ -38,7 +49,7 @@
    	  git add apps/train/backend.py
    	  
 9. git push
-   1> 推送当前分支到远程分支
+   1> 推送本地分支 trunk 到远程分支 remote_trunk:
       git push git@git.debug.google.com:michael/google.git trunk:remote_trunk
 
    
