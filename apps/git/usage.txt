@@ -16,20 +16,21 @@
 	 git push <远程主机> <本地分支>:<远程分支> --force 
 	   说明:  force 表示强制推送
 
-5. MR 和 Rebase
-        以trunk 为开发分支，master 为主分支。要从trunk 发起MR 为例：
+5. GIT 发起Merge request工作流程:
+     以trunk 为开发分支，master 为主分支。要从trunk 发起MR 为例：
    
 	 1> 切换到master分支,同步代码:  git pull
 	 2> 切换到要push 的分支:       git checkout trunk
-	 3> 在20141128上执行                        git rebase master
+	 3> 在trunk分支上执行          git rebase master
 	 4> 解决冲突: 				...
 	 5> 添加文件:           		git add -u   
 	    # -u表示把所有track文件的修改加入缓存，而不加入文件。
 		# 注: 此处不可调用commit
+	
 	 6> 继续rebase:              git rebase --continue
 	 7> 推送分支发MR:				git push ...
    
-       注意事项：
+     注意事项：
 	 1> 在rebase过程中及完成后，都不需要执行commit, 是git自动完成。
 	 2> 如中间遇到某个补丁不需要patch, 可以用:
 	    git rebase --skip
@@ -37,10 +38,10 @@
 	    git rebase --abort
 
 6. 用cherry-pick 发起mr:
-       以release 为发布分支，master 为主分支。要从master 挑选部分commit至release， 发起MR:
+   以release 为发布分支，master 为主分支。要从master 挑选部分commit至release， 发起MR:
    1> 切换到master分支,同步代码:  git pull
    2> 切换到要push 的分支:       git checkout release
-   3> 执行cherry-pick: 
+   3> 在release分支上执行cherry-pick: 
 	  1> 如果是一个merger:        
 	     git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36 -m 1
 	       
@@ -51,4 +52,12 @@
 	    
    
 6. 添加忽略文件
+	 1> 创建全局忽略文件, 比如忽略.project文件：
+	 	git config --global core.excludesfile ~/.gitignore
+	 	vim ~/.gitignore， 输入下列内容, 保存退出:
+	 	*.project
 	 
+	 2> 创建局部忽略文件, 在指定仓库目录下，如：/root/home/micheal/workspace：
+	 	git config --local core.excludesfile ./gitignore
+	 		
+	 	

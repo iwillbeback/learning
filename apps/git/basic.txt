@@ -19,7 +19,11 @@ GIT 的几个基本概念
       
 4. 有两种方法可以得到一个本地git 库
 	 1> 从本地目录创建一个git 库
+	 	git init
+	 	
 	 2> 从远端克隆一个git 库
+	 	git clone git@github.com:michaelliao/learngit.git
+	 
  
  
 

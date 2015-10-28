@@ -1,6 +1,7 @@
 1. git rm
    1> 删除一个文件
 	  git rm apps/readme.txt
+	  
    1> 删除一个目录
    	  git rm -r apps/package/
 
@@ -14,7 +15,7 @@
    	  解释: 这样在push 的时候就可以直接引用别名而无须输入完整URL. 如：将本地分支local推送到远端trunk
 	   	  以下两条命令等同：
 	   	  git push git://github.com/paulboone/ticgit.git  local:trunk
-	   	  或：
+	   	  等同于：
 	   	  git push ticgit local:trunk
 	   	  
 3. git fetch
@@ -27,29 +28,28 @@
    1> 切换至trunk分支
    	  git checkout trunk
    
-   2> 放弃文件修改;
+   2> 放弃文件修改
    	  git checkout apps/train/backend.py
    	  放弃当前所有文件：
    	  git checkout -- .
-   	
 
 5. git commit
-   1> 提交暂存区内容至仓库
-      git commit -m"Fixed some bugs"
+	描述:	提交暂存区内容至仓库
+    示例:	git commit -m"Fixed some bugs"
 
 6. git branch
-   1> 基于当前分支 ，新建一个分支
+   描述：基于当前分支 ，新建一个分支
    	  git branch trunk
-   2> 删除一个分支
-   	  git branch -D trunk
    
+   描述：删除一个分支
+   	  git branch -D trunk
 
 7. git add
-   1> 将指定文件添加至暂存区
-   	  git add apps/train/backend.py
+   描述：将指定文件添加至暂存区
+   示例：git add apps/train/backend.py
    	  
 9. git push
-   1> 推送本地分支 trunk 到远程分支 remote_trunk:
+   推送本地分支 trunk 到远程分支 remote_trunk:
       git push git@git.debug.google.com:michael/google.git trunk:remote_trunk
 
    
