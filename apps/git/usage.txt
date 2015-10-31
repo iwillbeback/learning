@@ -61,9 +61,23 @@
 	 	git config --local core.excludesfile ./gitignore
 
 7. 在git中删除一个文件
-	1> 新建文件，而未加至缓存区的, 直接删除： rm readme.txt 	
+	1> 新建文件，而未加至缓存区的
+		直接删除： rm readme.txt 	
+		或者：    git clean -fd //f:文件; d:目录
+		查看要删除的： git clean -n
+	
 	2> 新建文件，加至缓存区未提交的:  git reset HEAD readme.txt
+	
 	3> 新建文件，已提交本地版本库的:  
 		git rm readme.txt
 		git commit -am "Remove readme.txt"
+
+8. 还原更改
+	1> 如果新建文件或文件夹，还未加到索引区，可以直接
+		git clean -fd
+	
+	2> 如果在已有文件上的更新，还未添加至索引区:
+		git checkout -- readme.txt
+	
+	3>
 	
