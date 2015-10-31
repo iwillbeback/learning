@@ -67,6 +67,7 @@
 		查看要删除的： git clean -n
 	
 	2> 新建文件，加至缓存区未提交的:  git reset HEAD readme.txt
+	
 	3> 新建文件，已提交本地版本库的:  
 		git rm readme.txt
 		git commit -am "Remove readme.txt"
