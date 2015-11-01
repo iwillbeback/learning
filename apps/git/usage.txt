@@ -1,22 +1,25 @@
-1. 为远程分支设置另名
-	  Format:	
-	   		git remote add <分支别名> <远程主机名>
-	  Sample:
-	   		git remote add upstream git@git.debug.google.com:aos/bass.git 
+1. 为远程主机设置别名
+	git remote add <别名> <远程主机名>
+	git remote add upstream git@git.debug.google.com:aos/bass.git 
+	
+	设置以后, 以下两条命令相同:
+	git push upstream local:trunk
+	git push git@git.debug.google.com:aos/bass.git local:trunk
 
-2. 合并分支xxx到当前分支
-	   git merge 20141023     #合并20141023到当前分支
+2. 将master合并到当前分支
+	 git merge master
 
-3. 从远程拉取并合并至本地分支
-	   git pull <远程分支>  <本地分支>
-	   git pull upstream dev
-	   
+3. 从远程拉取master，合并至到当前分支
+   git pull <远程主机> <远程分支>
+   git pull upstream  master
 
 4. 推送到远程分支
-	 git push <远程主机> <本地分支>:<远程分支> --force 
-	   说明:  force 表示强制推送
+	 git push <远程主机> <本地分支>:<远程分支>
+	 
+	 将本地local分支推送到远程trunk分支 
+	 git push origin local:trunk
 
-5. GIT 发起Merge request工作流程:
+5. GIT典型工作流程:
      以trunk 为开发分支，master 为主分支。要从trunk 发起MR 为例：
    
 	 1> 切换到master分支,同步代码:  git pull
@@ -37,10 +40,11 @@
 	 3> 如果想回到rebase之前状态:
 	    git rebase --abort
 
-6. 用cherry-pick 发起mr:
+6. 用cherry-pick 发起mr
    以release 为发布分支，master 为主分支。要从master 挑选部分commit至release， 发起MR:
    1> 切换到master分支,同步代码:  git pull
-   2> 切换到要push 的分支:       git checkout release
+   2> 切换到release分支:         git checkout release
+   
    3> 在release分支上执行cherry-pick: 
 	  1> 如果是一个merger:        
 	     git cherry-pick 680573cf7b54c1569d06a653990a98356de6bd36 -m 1
@@ -60,24 +64,30 @@
 	 2> 创建局部忽略文件, 在指定仓库目录下，如：/root/home/micheal/workspace：
 	 	git config --local core.excludesfile ./gitignore
 
-7. 在git中删除一个文件
-	1> 新建文件，而未加至缓存区的
-		直接删除： rm readme.txt 	
-		或者：    git clean -fd //f:文件; d:目录
-		查看要删除的： git clean -n
-	
-	2> 新建文件，加至缓存区未提交的:  git reset HEAD readme.txt
-	
-	3> 新建文件，已提交本地版本库的:  
-		git rm readme.txt
-		git commit -am "Remove readme.txt"
 
-8. 还原更改
+7. 内容回滚
 	1> 如果新建文件或文件夹，还未加到索引区，可以直接
 		git clean -fd
 	
 	2> 如果在已有文件上的更新，还未添加至索引区:
 		git checkout -- readme.txt
 	
-	3>
+	3> 如果文件已添加到版本库，则须用git reset回滚, 有三种模式以下一一介绍：
+	   git reset --[mode] [commit number]
+	   
+	   3.1> soft 模式：只回滚版本库，保留索引区和工作目录:
+	   
+		   git reset --soft HEAD~1  //回滚至上一个版本 
+		   git reset --soft fd3424  //回滚到指定版本
+		   
+	   3.2> mixed 模式: 回滚版本库和索引区，保留工作目录:
+	   	   git reset --mixed HEAD~1 //回滚到上一个版本
+	   	   git reset fd3424			//回滚至指定版本
+	   
+	   3.3> hard 模式: 回滚所有区域内容
+	   		git reset --hard HEAD~3 //向后回滚三个版本
+	   		git reset --hard fd4556 
+	       
+	   
+	   
 	

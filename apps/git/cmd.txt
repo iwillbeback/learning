@@ -11,12 +11,6 @@
    
    2> 为远端代码仓库URL 设置别名:
    	  git remote add ticgit git://github.com/paulboone/ticgit.git
-   	  
-   	  解释: 这样在push 的时候就可以直接引用别名而无须输入完整URL. 如：将本地分支local推送到远端trunk
-	   	  以下两条命令等同：
-	   	  git push git://github.com/paulboone/ticgit.git  local:trunk
-	   	  等同于：
-	   	  git push ticgit local:trunk
 	   	  
 3. git fetch
    1> 获取远端分支
@@ -45,7 +39,7 @@
    	  git branch -D trunk
 
 7. git add
-   描述：将指定文件添加至暂存区
+   描述：将工作区文件, 添加至暂存区
    示例：git add apps/train/backend.py
    	  
 9. git push
